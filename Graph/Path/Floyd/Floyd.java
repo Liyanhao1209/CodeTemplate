@@ -13,7 +13,7 @@ public class Floyd {
                         continue;
                     }
                     if(dp[i][j]==null){
-                        if(dp[i][k]==null || dp[k][j]==null){
+                        if(dp[i][j]==null || dp[i][k]==null || dp[k][j]==null){
                             ans[i][j] = null;
                         }
                         else{
