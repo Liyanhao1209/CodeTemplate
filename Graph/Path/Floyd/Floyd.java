@@ -3,7 +3,7 @@ package Graph.Path.Floyd;
 public class Floyd {
     public Integer[][] shortestPath(Integer[][] g){
         int n = g.length;
-        Integer[][] ans = g.clone(); // ought to be equal
+        Integer[][] ans = g.clone();
         Integer[][] dp;
         for(int k=0;k<n;k++){
             dp=ans.clone();
