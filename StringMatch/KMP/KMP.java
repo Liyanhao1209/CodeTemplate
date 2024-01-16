@@ -17,22 +17,22 @@ public class KMP {
         char[] pch = p.toCharArray();
         int[] next = buildNext(p);
 
-        int j = 0;
-        for(int i=0;i<sch.length;){
-            if(sch[i]==pch[j]){
-                j++;
-                if(j==pch.length){
-                    ans.add(i-pch.length+1);
-                    j=0;
-                    if(pch.length>1){
-                        continue;
-                    }
-                }
-                i++;
-                continue;
+        int count = 0;
+        for (int i = 0; i < sch.length; i++) {
+            while(count > 0 && pch[count] != sch[i]){
+                // 回退到上一轮可以复用的前缀的长度
+                count = next[count-1];
             }
-            i -= j<1?-1:next[j-1];
-            j=0;
+
+            if( pch[count] == sch[i]){
+                count++;
+            }
+
+            if(count == pch.length){
+                ans.add(i-pch.length+1);
+                // 复用整个模式串的k-前/后缀长度
+                count = next[count-1];
+            }
         }
 
         return ans;
@@ -83,7 +83,6 @@ public class KMP {
             else{
                 /*
                 如果得知ch[0,next[i-1]-1]中的最大K值，也就是next[ next[i-1]-1 ]，为0，
-
                  */
                 int pnxtk = next[Math.max(next[i - 1] - 1, 0)];
                 next[i] = 0;
