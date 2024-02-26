@@ -1,5 +1,8 @@
 package StringMatch.Z_Function;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Z_Function {
     /*
     1. abababzabababab
@@ -36,5 +39,22 @@ public class Z_Function {
             }
         }
         return -1;
+    }
+
+    // 怎么用Z函数做字符串匹配？把p拼在s前面，计算z数组的len(p)后面的部分即可
+    public List<Integer> search(String s,String p){
+        ArrayList<Integer> ans = new ArrayList<>();
+
+        String tmp = p+s;
+        int[] z = z_algorithm(tmp);
+
+        int start = p.length();
+        for(int i=start;i<z.length;i++){
+            if(z[i]>=start){
+                ans.add(i-start);
+            }
+        }
+
+        return ans;
     }
 }
