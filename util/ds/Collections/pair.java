@@ -1,3 +1,5 @@
+package util.ds.Collections;
+
 import java.util.Objects;
 
 class pair<T> {

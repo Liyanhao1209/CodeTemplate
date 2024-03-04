@@ -1,8 +1,10 @@
+package util.ds.Nodes;
+
 public class BiListNode {
-    BiListNode pre;
-    BiListNode next;
-    int val;
-    int freq; // optional,just for some specific practices
+    public BiListNode pre;
+    public BiListNode next;
+    public int val;
+    public int freq; // optional,just for some specific practices
 
     public BiListNode(BiListNode pre,BiListNode next,int val,int freq){
         this.pre = pre;
