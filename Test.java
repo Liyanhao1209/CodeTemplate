@@ -18,15 +18,56 @@ public class Test {
 
 
         assert values != null;
-        ListNode[] linkedLists = constructKLinkedListViaArray(values);
+        BiListNode biListNode = constructBiLinkedListViaArray(values[0]);
 
-        System.out.println(
-                s.solve(linkedLists)
-        );
+        for(int i=1;i<=5;i++){
+            for(int j=0;j<i;j++){
+                System.out.println(
+                        s.locate(biListNode,i)
+                );
+            }
+        }
     }
 
     public static ListNode[] test(int[][] values){
         return constructKLinkedListViaArray(values);
+    }
+
+    public static BiListNode constructBiLinkedListViaArray(int[] values){
+        BiListNode head = new BiListNode(null,null,0,0);
+
+        BiListNode cur = head;
+        for (int value : values) {
+            cur.next = new BiListNode(cur,null,value,0);
+            cur = cur.next;
+        }
+
+        return head;
+    }
+
+    // 创造K个单循环链表
+    public static ListNode[] constructKCyclicLinkedListViaArray(int[][] values){
+        ListNode[] LinkedLists = new ListNode[values.length];
+        for (int i = 0; i < values.length; i++) {
+            LinkedLists[i] = constructCyclicLinkedListViaArray(values[i]);
+        }
+
+        return LinkedLists;
+    }
+
+    // 创造1个单循环链表
+    public static ListNode constructCyclicLinkedListViaArray(int[] values){
+        ListNode dummy = new ListNode(0, null);
+
+        ListNode cur = dummy;
+        for (int value : values) {
+            cur.next = new ListNode(value,null);
+            cur = cur.next;
+        }
+
+        cur.next = dummy;
+
+        return dummy;
     }
 
     // 根据K个数组生成K个链表
