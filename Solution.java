@@ -1,12 +1,24 @@
 class Solution{
 
-    public boolean solve(ListNode... nodes){
-        return isConsecutiveSubSequential(nodes[0],nodes[1]);
+    public void solve(ListNode... nodes){
+
     }
 
     // 带头结点
-    public boolean isConsecutiveSubSequential(ListNode h1,ListNode h2){
-        return false;
+    public void yourMethod(ListNode... nodes){
+
+    }
+
+    private int getLen(ListNode head){
+        int len = 0;
+
+        ListNode cur = head.next;
+        while(cur!=null){
+            len++;
+            cur = cur.next;
+        }
+
+        return len;
     }
 
 }
