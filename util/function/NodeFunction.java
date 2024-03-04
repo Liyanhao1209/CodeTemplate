@@ -4,6 +4,31 @@ import util.ds.Nodes.BiListNode;
 import util.ds.Nodes.ListNode;
 
 public class NodeFunction {
+    private static ListNode last;
+    public static synchronized ListNode Reverse(ListNode node){
+        if(node==null){
+            return null;
+        }
+
+        ListNode dfs = dfs(node);
+        dfs.next = null;
+
+        return last;
+
+    }
+
+    private static synchronized ListNode dfs(ListNode node){
+        if(node.next==null){
+            last = node;
+            return node;
+        }
+
+        ListNode next = dfs(node.next);
+        next.next = node;
+
+        return node;
+    }
+
     public static int getLen(ListNode head){
         int len = 0;
 

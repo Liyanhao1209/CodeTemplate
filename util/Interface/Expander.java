@@ -3,7 +3,7 @@ package util.Interface;
 import java.lang.reflect.Array;
 
 public interface Expander<T> {
-    default T[] dynamicDilatation(T[] src,int newLen){
+    default T[] dynamicDilatation(T[] src, int newLen){
         if(src.length>=newLen){
             return src;
         }

@@ -53,6 +53,11 @@ public class ArrayStack<T> implements Expander<T>, Stack<T> {
     }
 
     @Override
+    public int size() {
+        return top+1;
+    }
+
+    @Override
     public String toString(){
         StringBuilder sb = new StringBuilder("from left to right correspond from bottom to top:\t[ ");
         for (int i = 0; i < top; i++) {

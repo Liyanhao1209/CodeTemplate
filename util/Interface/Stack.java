@@ -9,5 +9,7 @@ public interface Stack<T> {
 
     T peek();
 
-    int search(T target); // start from index 0
+    int search(T target); // start from index 0,the first ele matches
+
+    int size();
 }
