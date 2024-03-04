@@ -1,5 +1,3 @@
-package Node;
-
 public class ListNode {
       int val;
       ListNode next;
@@ -9,6 +7,12 @@ public class ListNode {
 
        @Override
        public String toString() {
-             return val+"";
+          StringBuilder sb = new StringBuilder();
+          ListNode cur = this;
+          while(cur!=null){
+              sb.append(cur.val).append(" ");
+              cur = cur.next;
+          }
+          return sb.toString().trim();
        }
  }

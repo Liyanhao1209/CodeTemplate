@@ -1,5 +1,3 @@
-package Util;
-
 import java.util.Objects;
 
 class pair<T> {
