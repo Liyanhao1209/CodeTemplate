@@ -1,47 +1,44 @@
 package Solution;
 
 import util.ds.Collections.Stack.LinkedStack;
+import util.ds.Collections.Stack.OppositeStack;
 import util.ds.Nodes.ListNode;
 
 import static util.function.NodeFunction.getLen;
 
 public class Solution{
-    public boolean solve(ListNode... nodes){
-        return isSymmetric(nodes[0]);
+    public void solve(int[][] values){
+        showOppositeStack(values[0]);
     }
 
-    // 带头结点
-    public boolean isSymmetric(ListNode head){
-        if(head.next==null||head.next.next==null){
-            return true;
-        }
+    public void showOppositeStack(int[] values){
+        OppositeStack<Integer> stk = new OppositeStack<Integer>(10);
 
-        LinkedStack<Integer> stk = new LinkedStack<>();
-
-        ListNode cur = head.next;
-
-        int n = getLen(head);
-        int specialIndex = n%2==0?(n+1):(n/2);
-
-        int i = 0;
-        while(cur!=null){
-            if(i==specialIndex){
-                cur = cur.next;
-                i++;
-                continue;
-            }
-            int val = cur.val;
-            if(i<n/2){
-                stk.push(val);
+        boolean flag = true;
+        for (int value : values) {
+            if(flag){
+                stk.push1(value);
             }else{
-                if(stk.pop()!=val){
-                    return false;
-                }
+                stk.push2(value);
             }
-            cur = cur.next;
-            i++;
+            flag = !flag;
         }
 
-        return true;
+        System.out.println(stk);
+        System.out.println(stk.peek2());
+
+        while(!stk.is1Empty()){
+            System.out.println(stk.pop1());
+        }
+
+        System.out.println(stk);
+
+        System.out.println(stk.size2());
+
+        while(!stk.is2Empty()){
+            System.out.println(stk.pop2());
+        }
+
+        System.out.println(stk.peek1());
     }
 }

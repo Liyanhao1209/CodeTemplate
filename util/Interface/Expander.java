@@ -3,6 +3,8 @@ package util.Interface;
 import java.lang.reflect.Array;
 
 public interface Expander<T> {
+
+    @SuppressWarnings("unchecked")
     default T[] dynamicDilatation(T[] src, int newLen){
         if(src.length>=newLen){
             return src;
@@ -14,4 +16,5 @@ public interface Expander<T> {
 
         return res;
     }
+
 }

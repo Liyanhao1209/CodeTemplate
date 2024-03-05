@@ -23,11 +23,8 @@ public class Test {
 
         assert values != null;
 
-        System.out.println(
-                s.solve(
-                        constructKLinkedListViaArray(values)
-                )
-        );
+        s.solve(values);
+
 
     }
 
