@@ -1,44 +1,21 @@
 package Solution;
 
-import util.ds.Collections.Stack.LinkedStack;
-import util.ds.Collections.Stack.OppositeStack;
-import util.ds.Nodes.ListNode;
-
-import static util.function.NodeFunction.getLen;
+import util.ds.Collections.Stack.ArrayStack;
 
 public class Solution{
-    public void solve(int[][] values){
-        showOppositeStack(values[0]);
-    }
+    public int[] reverseQueue(int[] q){
+        int[] ans = new int[q.length];
 
-    public void showOppositeStack(int[] values){
-        OppositeStack<Integer> stk = new OppositeStack<Integer>(10);
-
-        boolean flag = true;
-        for (int value : values) {
-            if(flag){
-                stk.push1(value);
-            }else{
-                stk.push2(value);
-            }
-            flag = !flag;
+        ArrayStack<Integer> stk = new ArrayStack<Integer>(10);
+        for (int j : q) {
+            stk.push(j);
         }
 
-        System.out.println(stk);
-        System.out.println(stk.peek2());
-
-        while(!stk.is1Empty()){
-            System.out.println(stk.pop1());
+        int i=0;
+        while(!stk.isEmpty()){
+            ans[i++] = stk.pop();
         }
 
-        System.out.println(stk);
-
-        System.out.println(stk.size2());
-
-        while(!stk.is2Empty()){
-            System.out.println(stk.pop2());
-        }
-
-        System.out.println(stk.peek1());
+        return ans;
     }
 }

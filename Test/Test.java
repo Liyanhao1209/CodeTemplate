@@ -3,6 +3,9 @@ package Test;
 import Solution.Solution;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 import static util.dataStream.DataStream.DIY_On_Your_Own;
@@ -23,8 +26,9 @@ public class Test {
 
         assert values != null;
 
-        s.solve(values);
-
+        System.out.println(
+                Arrays.toString(s.reverseQueue(values[0]))
+        );
 
     }
 
