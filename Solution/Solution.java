@@ -1,47 +1,46 @@
 package Solution;
 
-import util.ds.Collections.Stack.LinkedStack;
-import util.ds.Nodes.ListNode;
-
-import static util.function.NodeFunction.getLen;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 
 public class Solution{
-    public boolean solve(ListNode... nodes){
-        return isSymmetric(nodes[0]);
-    }
-
-    // 带头结点
-    public boolean isSymmetric(ListNode head){
-        if(head.next==null||head.next.next==null){
+    public boolean isValid(int[] pushSeq, List<int[]> pattern){
+        if(pattern.size()==1){
             return true;
         }
 
-        LinkedStack<Integer> stk = new LinkedStack<>();
+        pattern.sort(Comparator.comparingInt(o -> o[1]));
 
-        ListNode cur = head.next;
+        int len = Arrays.stream(pushSeq).max().getAsInt();
+        int[] map = new int[len + 1];
 
-        int n = getLen(head);
-        int specialIndex = n%2==0?(n+1):(n/2);
+        for (int i = 0; i < pushSeq.length; i++) {
+            map[pushSeq[i]] = i;
+        }
 
-        int i = 0;
-        while(cur!=null){
-            if(i==specialIndex){
-                cur = cur.next;
-                i++;
-                continue;
-            }
-            int val = cur.val;
-            if(i<n/2){
-                stk.push(val);
-            }else{
-                if(stk.pop()!=val){
-                    return false;
+        int max;
+        for (int i = 0; i < pattern.size();i++) {
+            max = safelyGet(pattern.get(i)[0],map);
+            for (int j = i+1; j < pattern.size(); j++) {
+                max = Math.max(max,safelyGet(pattern.get(j)[0],map));
+                if(safelyGet(pattern.get(j)[0],map)<safelyGet(pattern.get(i)[0],map)){
+                    int posDiff = pattern.get(j)[1]-pattern.get(i)[1]-1;
+                    int rankDiff = max - safelyGet(pattern.get(j)[0], map) - 1;
+                    if(posDiff > rankDiff){
+                        return false;
+                    }
                 }
             }
-            cur = cur.next;
-            i++;
         }
 
         return true;
+    }
+
+    private int safelyGet(int ele,int[] rank){
+        if(ele>=rank.length||ele<0){
+            return 0;
+        }
+        return rank[ele];
     }
 }

@@ -3,11 +3,12 @@ package Test;
 import Solution.Solution;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static util.dataStream.DataStream.DIY_On_Your_Own;
 import static util.dataStream.DataStream.useInputFile;
-import static util.function.NodeFunction.constructKLinkedListViaArray;
 
 public class Test {
     public static void main(String[] args) throws IOException {
@@ -23,12 +24,12 @@ public class Test {
 
         assert values != null;
 
-        System.out.println(
-                s.solve(
-                        constructKLinkedListViaArray(values)
-                )
-        );
+        List<int[]> l = new ArrayList<>();
+        for (int i = 1; i < values.length; i++) {
+            l.add(values[i]);
+        }
 
+        System.out.println(s.isValid(values[0],l));
     }
 
 }
