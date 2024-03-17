@@ -3,8 +3,7 @@ package Test;
 import Solution.Solution;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 import java.util.Objects;
 
 import static util.dataStream.DataStream.DIY_On_Your_Own;
@@ -24,12 +23,8 @@ public class Test {
 
         assert values != null;
 
-        List<int[]> l = new ArrayList<>();
-        for (int i = 1; i < values.length; i++) {
-            l.add(values[i]);
-        }
+        s.showCircularQueue();
 
-        System.out.println(s.isValid(values[0],l));
     }
 
 }

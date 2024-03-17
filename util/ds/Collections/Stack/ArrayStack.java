@@ -3,6 +3,8 @@ package util.ds.Collections.Stack;
 import util.Interface.Expander;
 import util.Interface.Stack;
 
+import java.lang.reflect.Array;
+
 public class ArrayStack<T> implements Expander<T>, Stack<T> {
     private final static int ILLEGAL_TOP_POINTER = -1;
     T[] arr;
@@ -66,4 +68,6 @@ public class ArrayStack<T> implements Expander<T>, Stack<T> {
         sb.append("]");
         return sb.toString();
     }
+
+
 }

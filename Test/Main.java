@@ -1,4 +1,4 @@
-package Solution;
+package Test;
 
 import Solution.Solution;
 
