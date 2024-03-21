@@ -3,7 +3,6 @@ package Test;
 import Solution.Solution;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Objects;
 
 import static util.dataStream.DataStream.DIY_On_Your_Own;
@@ -23,7 +22,9 @@ public class Test {
 
         assert values != null;
 
-        s.showCircularQueue();
+        System.out.println(
+                s.reArrange(values[0],values[1][0])
+        );
 
     }
 

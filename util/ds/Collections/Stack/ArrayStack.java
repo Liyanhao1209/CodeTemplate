@@ -62,7 +62,7 @@ public class ArrayStack<T> implements Expander<T>, Stack<T> {
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder("from left to right correspond from bottom to top:\t[ ");
-        for (int i = 0; i < top; i++) {
+        for (int i = 0; i <= top; i++) {
             sb.append(arr[i].toString()).append(" ");
         }
         sb.append("]");
