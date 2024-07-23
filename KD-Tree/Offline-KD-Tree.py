@@ -19,7 +19,7 @@ class KDT:
     def ruled_sort(self,points:List[List[float]],sort_key:int)->List[List[float]]:
         return sorted(points,key=lambda l:l[sort_key])
     
-    # O(n^2 * logn)
+    # O(n * log^2(n))
     def __init__(self,points:List[List[float]]) -> None:
         
         def divide(pts:List[List[float]],si:int)->Node:
