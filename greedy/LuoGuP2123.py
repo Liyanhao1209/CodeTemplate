@@ -5,13 +5,18 @@ n = int(input())
 @total_ordering
 class nh:
 
-    def __init__(self,l:int,r:int) -> None:
+    def __init__(self,l:int,r:int,d:int) -> None:
         self.l = l
         self.r = r
+        self.d = d
     
     def __lt__(self,x)->bool:
         if isinstance(x,nh):
-            return min(self.l,x.r) < min(x.l,self.r)
+            if self.d!=x.d:
+                return self.d<x.d
+            if self.d<=0:
+                return self.l<x.l
+            return self.r>x.r
 
 
 def solve():
@@ -19,7 +24,10 @@ def solve():
     nhs = []
     for _ in range(m):
         l,r = tuple(map(int,input().split()))
-        nhs.append(nh(l,r))
+        nhs.append(nh(l,r,
+                      1 if l>r else (
+                        -1 if l<r else 0
+                      )))
     nhs = sorted(nhs)
 
     prec = nhs[0].l+nhs[0].r
