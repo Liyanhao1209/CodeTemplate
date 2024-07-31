@@ -85,9 +85,9 @@ class SegTree:
         self.pushdown(curr)
         res = 0
         if x<=mid:
-            res += self.query(self.lc(curr),x,y)
+            res += self.query(self.lc(curr),x,max(x,min(y,mid)))
         if y>mid:
-            res += self.query(self.rc(curr),x,y)
+            res += self.query(self.rc(curr),min(y,max(mid+1,x)),y)
         return res
 
 n,m = tuple(map(int,input().split()))
